@@ -1,4 +1,4 @@
-=== Site Maintenance ===
+=== SOPA Blackout ===
 Contributors: eagerterrier
 Tags: SOPA, webblackout, blackout, 18th Jan, PIPA 503
 Requires at least: 2.5

@@ -245,7 +245,7 @@ function sopablackout_content() {
 				|| strstr(htmlspecialchars($_SERVER['REQUEST_URI']), '/plugins/') 		// So that currently enabled plugins work while in maintenance mode.
 				|| strstr($_SERVER['PHP_SELF'], 'upgrade.php')
 			){ 
-				return; // exit function ApplyMaintenanceMode()
+				return; 
 		} else {
 		$sopablackout_page_title = sopablackout_get_option('page_title');
 		$page = dirname(__FILE__) . '/sopablackout_display.php';
