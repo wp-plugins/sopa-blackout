@@ -1,14 +1,14 @@
 <?php
 /**
  * @package SopaBlackout
- * @version 1.0
+ * @version 1.1
  */
 /*
 Plugin Name: SOPA Blackout
 Plugin URI: http://blog.eagerterrier.co.uk/2012/01/stop-sopa-blackout-wp-plugin/
 Description: Blacks out your website on January 18th 2012 in support of those against SOPA
 Author: Toby Cox
-Version: 1.0
+Version: 1.1
 Author URI: http://eagerterrier.co.uk
 */
 
@@ -39,6 +39,7 @@ function sopablackout_get_option($option_name) {
     $sopablackout_default_options=array();
     
     $sopablackout_default_options['test_mode']			= false;
+    $sopablackout_default_options['show_blackout_to_logged_in_users'] = false;
     $sopablackout_default_options['message']			= '<p>On the Tuesday 24th January 2012, the US Senate will vote on the <a href="http://en.wikipedia.org/wiki/Stop_Online_Piracy_Act" target="_blank">internet censorship bill</a>.<br /><br />Whilst it is an American law, it has far reaching repurcusions for the web as a whole.<br /><br />There are many companies against SOPA, such as <a href="http://www.mattcutts.com/blog/internet-censorship-sopa/" target="_blank">Google</a>, <a href="http://blog.reddit.com/2012/01/stopped-they-must-be-on-this-all.html" target="_blank">Reddit</a>, <a href="http://news.cnet.com/8301-31921_3-57342914-281/silicon-valley-execs-blast-sopa-in-open-letter/" target="_blank">Facebook, Twitter, Wikipedia</a>, and today I am lending my weight to the argument by taking my site down for the day.<br /><br />If you think SOPA doesn\'t affect you, please think again. Watch the video below, or use the form below to force politicians to take notice.<br /><br />Thank you</p>';
     
 	$sopablackout_default_options['blackoutdate_year']	= '2012';
@@ -81,18 +82,19 @@ function sopablackout_options() {
 		
 		// process submitted form
 		$sopablackout_options = get_option('sopablackout_options');
-		$sopablackout_options['page_title']			= $_POST['page_title'];
-		$sopablackout_options['message']			= $_POST['message'];
-		$sopablackout_options['blackoutdate_year']	= $_POST['blackoutdate_year'];
-		$sopablackout_options['blackoutdate_month']	= $_POST['blackoutdate_month'];
-		$sopablackout_options['blackoutdate_day']	= $_POST['blackoutdate_day'];
-		$sopablackout_options['blackouttimestart']	= $_POST['blackouttimestart'];
-		$sopablackout_options['blackouttimeend']	= $_POST['blackouttimeend'];
-		$sopablackout_options['blackouttimezone']	= $_POST['blackouttimezone'];
-		$sopablackout_options['message']			= $_POST['message'];
-		$sopablackout_options['include_form']		= ($_POST['include_form']=="true"		? true : false);
-		$sopablackout_options['include_video']		= ($_POST['include_video']=="true"		? true : false);
-		$sopablackout_options['test_mode']			= ($_POST['test_mode']=="true"	? true : false);
+		$sopablackout_options['page_title']									= $_POST['page_title'];
+		$sopablackout_options['message']									= $_POST['message'];
+		$sopablackout_options['blackoutdate_year']							= $_POST['blackoutdate_year'];
+		$sopablackout_options['blackoutdate_month']							= $_POST['blackoutdate_month'];
+		$sopablackout_options['blackoutdate_day']							= $_POST['blackoutdate_day'];
+		$sopablackout_options['blackouttimestart']							= $_POST['blackouttimestart'];
+		$sopablackout_options['blackouttimeend']							= $_POST['blackouttimeend'];
+		$sopablackout_options['blackouttimezone']							= $_POST['blackouttimezone'];
+		$sopablackout_options['message']									= $_POST['message'];
+		$sopablackout_options['include_form']								= ($_POST['include_form']=="true"		? true : false);
+		$sopablackout_options['include_video']								= ($_POST['include_video']=="true"		? true : false);
+		$sopablackout_options['test_mode']									= ($_POST['test_mode']=="true"			? true : false);
+		$sopablackout_options['show_blackout_to_logged_in_users']			= ($_POST['show_blackout_to_logged_in_users']=="true"			? true : false);
 		update_option('sopablackout_options', $sopablackout_options);
 
 		_e('Options saved', 'mtli')
@@ -207,6 +209,12 @@ function sopablackout_options() {
 					<tr>
 						<td><input type="checkbox" name="test_mode" id="test_mode" value="true" <?php if (sopablackout_get_option('test_mode')) echo "checked"; ?> /> </td>
 					</tr>
+					<tr>
+						<td>By default, logged in users will see your site's full content. If you would like logged in users to get the Stop SOPA Blackout page instead, click here</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="show_blackout_to_logged_in_users" id="show_blackout_to_logged_in_users" value="true" <?php if (sopablackout_get_option('show_blackout_to_logged_in_users')) echo "checked"; ?> /> </td>
+					</tr>
 				</table>
 			</fieldset>
 			<div class="submit">
@@ -239,7 +247,7 @@ endif;
 
 if(!function_exists('sopablackout_content')){
 function sopablackout_content() {
-	if ( !is_user_logged_in() && !is_admin() && !strstr(htmlspecialchars($_SERVER['REQUEST_URI']), '/wp-admin/') ) {
+	if ( sopablackout_showtologgedinusers() && !strstr(htmlspecialchars($_SERVER['REQUEST_URI']), '/wp-admin/') ) {
 		if( strstr($_SERVER['PHP_SELF'],    'wp-login.php') 
 				|| strstr($_SERVER['PHP_SELF'], 'async-upload.php') // Otherwise media uploader does not work 
 				|| strstr(htmlspecialchars($_SERVER['REQUEST_URI']), '/plugins/') 		// So that currently enabled plugins work while in maintenance mode.
@@ -289,6 +297,10 @@ function sopablackout_checkdate(){
 
 function sopablackout_testmode(){
 	return sopablackout_get_option('test_mode');
+}
+
+function sopablackout_showtologgedinusers(){
+	return ((!is_user_logged_in() && !is_admin()) || sopablackout_get_option('show_blackout_to_logged_in_users'));
 }
 
 if (function_exists('add_filter') && (sopablackout_checkdate() || sopablackout_testmode()) ){

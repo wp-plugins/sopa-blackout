@@ -1,6 +1,7 @@
 === SOPA Blackout ===
 Contributors: eagerterrier
-Tags: SOPA, webblackout, blackout, 18th Jan, PIPA 503
+Tags: SOPA, webblackout, blackout, 18th Jan, PIPA, 503
+Donate link: http://blog.eagerterrier.co.uk/2012/01/stop-sopa-blackout-wp-plugin/
 Requires at least: 2.5
 Tested up to: 3.3.1
 Stable tag: trunk
@@ -24,5 +25,20 @@ Search engine rankings will not be affected as the plugin sends a 503 status.
 
 == Changelog ==
 
-= 2.0.9 =
+= 1.0 =
 * Initial Upload
+
+= 1.1 =
+* Adding ability for logged in users/admins to see the SOPA Blackout content.
+
+
+== Upgrade Notice ==
+
+= 1.1 =
+* Adding ability for logged in users/admins to see the SOPA Blackout content.
+
+
+== Screenshots ==
+
+1. Screenshot of the administration screen
+2. Screenshot of plugin in action.
