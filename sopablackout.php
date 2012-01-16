@@ -1,14 +1,14 @@
 <?php
 /**
  * @package SopaBlackout
- * @version 1.1
+ * @version 1.2
  */
 /*
 Plugin Name: SOPA Blackout
 Plugin URI: http://blog.eagerterrier.co.uk/2012/01/stop-sopa-blackout-wp-plugin/
 Description: Blacks out your website on January 18th 2012 in support of those against SOPA
 Author: Toby Cox
-Version: 1.1
+Version: 1.2
 Author URI: http://eagerterrier.co.uk
 */
 

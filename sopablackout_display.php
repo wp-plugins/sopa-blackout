@@ -5,8 +5,10 @@
 	<title><?php bloginfo('name'); ?> &rsaquo; <?php echo $sopablackout_page_title; ?></title>
 	<style>
 		body, html {background-color:#000000; color:#ffffff;font-family:"Trebuchet MS", Myriad, Arial;}
-		div.sopablackout_padding {padding:24px;}
+		div.sopablackout_padding {padding:24px; width:600px;}
 		#container {width:1000px; margin:40px auto;}
+		a {color:#00BCA4;}
+		a:hover {text-decoration:none;}
 		p, div.sopablackout_padding { font-size:14px; line-height:140%;}
 	</style>
 </head>

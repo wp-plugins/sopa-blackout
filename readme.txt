@@ -31,11 +31,17 @@ Search engine rankings will not be affected as the plugin sends a 503 status.
 = 1.1 =
 * Adding ability for logged in users/admins to see the SOPA Blackout content.
 
+= 1.2 =
+* Slight tweak to the CSS on display page. Didn't like the default blue colour. Made it tie in with americancensorship's green. Adjustment to width of main column.
+
 
 == Upgrade Notice ==
 
 = 1.1 =
 * Adding ability for logged in users/admins to see the SOPA Blackout content.
+
+= 1.2 =
+* Slight tweak to the CSS on display page. Didn't like the default blue colour. Made it tie in with americancensorship's green.
 
 
 == Screenshots ==
