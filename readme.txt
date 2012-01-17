@@ -25,29 +25,35 @@ Search engine rankings will not be affected as the plugin sends a 503 status.
 
 == Changelog ==
 
-= 1.0 =
-* Initial Upload
+= 1.4 =
+* Errant short PHP tags deleted
 
-= 1.1 =
-* Adding ability for logged in users/admins to see the SOPA Blackout content.
+= 1.3 =
+* Some template/plugin conflict with the plugin. Changed the hook to template_redirect() and added some nocache headers etc.
 
 = 1.2 =
 * Slight tweak to the CSS on display page. Didn't like the default blue colour. Made it tie in with americancensorship's green. Adjustment to width of main column.
 
-= 1.3 =
-* Some template/plugin conflict with the plugin. Changed the hook to template_redirect() and added some nocache headers etc.
+= 1.1 =
+* Adding ability for logged in users/admins to see the SOPA Blackout content.
+
+= 1.0 =
+* Initial Upload
 
 
 == Upgrade Notice ==
 
-= 1.1 =
-* Adding ability for logged in users/admins to see the SOPA Blackout content.
-
-= 1.2 =
-* Slight tweak to the CSS on display page. Didn't like the default blue colour. Made it tie in with americancensorship's green.
+= 1.4 =
+* Errant short PHP tags deleted
 
 = 1.3 =
 * Some template/plugin conflict with the plugin. Changed the hook to template_redirect() and added some nocache headers etc.
+
+= 1.2 =
+* Slight tweak to the CSS on display page. Didn't like the default blue colour. Made it tie in with americancensorship's green. Adjustment to width of main column.
+
+= 1.1 =
+* Adding ability for logged in users/admins to see the SOPA Blackout content.
 
 
 == Screenshots ==

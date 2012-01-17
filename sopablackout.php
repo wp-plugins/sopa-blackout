@@ -1,14 +1,14 @@
 <?php
 /**
  * @package SopaBlackout
- * @version 1.3
+ * @version 1.4
  */
 /*
 Plugin Name: SOPA Blackout
 Plugin URI: http://blog.eagerterrier.co.uk/2012/01/stop-sopa-blackout-wp-plugin/
 Description: Blacks out your website on January 18th 2012 in support of those against SOPA
 Author: Toby Cox
-Version: 1.3
+Version: 1.4
 Author URI: http://eagerterrier.co.uk
 */
 
@@ -150,13 +150,13 @@ function sopablackout_options() {
 								$selecteddatemonth = sprintf('%02d',sopablackout_get_option('blackoutdate_month'));
 								$selecteddateyear = sopablackout_get_option('blackoutdate_year');?>
 							<select name="blackoutdate_day" id="blackoutdate_day">
-								<?php for($i=1;$i<32; $i++){ ?><option value="<?php echo sprintf('%02d',$i);?>"<?php if($selecteddateday==$i) echo ' selected';?>><?php echo $i;?></option><? } ?>
+								<?php for($i=1;$i<32; $i++){ ?><option value="<?php echo sprintf('%02d',$i);?>"<?php if($selecteddateday==$i) echo ' selected';?>><?php echo $i;?></option><?php } ?>
 							</select>
 							<select name="blackoutdate_month" id="blackoutdate_month">
-								<?php for($i=1;$i<13; $i++){ ?><option value="<?php echo sprintf('%02d',$i);?>"<?php if($selecteddatemonth==$i) echo ' selected';?>><?php echo date('F',strtotime('2012-'.$i.'-01'));?></option><? } ?>
+								<?php for($i=1;$i<13; $i++){ ?><option value="<?php echo sprintf('%02d',$i);?>"<?php if($selecteddatemonth==$i) echo ' selected';?>><?php echo date('F',strtotime('2012-'.$i.'-01'));?></option><?php } ?>
 							</select>
 							<select name="blackoutdate_year" id="blackoutdate_year">
-								<?php for($i=2012;$i<(date('Y')+5); $i++){ ?><option value="<?php echo $i;?>"<?php if($selecteddateyear==$i) echo ' selected';?>><?php echo $i;?></option><? } ?>
+								<?php for($i=2012;$i<(date('Y')+5); $i++){ ?><option value="<?php echo $i;?>"<?php if($selecteddateyear==$i) echo ' selected';?>><?php echo $i;?></option><?php } ?>
 							</select>
 						</td>
 					</tr>
