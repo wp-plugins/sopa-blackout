@@ -48,3 +48,10 @@ Search engine rankings will not be affected as the plugin sends a 503 status.
 
 1. Screenshot of the administration screen
 2. Screenshot of plugin in action.
+
+
+== Frequently Asked Questions ==
+
+= I can't see my timezone listed. What do I do? =
+
+The timezone option is to be used if you wish to co-ordinate with the US blackout. If you want your site to be blacked out 8am-8pm in your own timezone, leave the timezone option blank.
