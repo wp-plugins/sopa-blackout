@@ -1,14 +1,14 @@
 <?php
 /**
  * @package SopaBlackout
- * @version 1.2
+ * @version 1.3
  */
 /*
 Plugin Name: SOPA Blackout
 Plugin URI: http://blog.eagerterrier.co.uk/2012/01/stop-sopa-blackout-wp-plugin/
 Description: Blacks out your website on January 18th 2012 in support of those against SOPA
 Author: Toby Cox
-Version: 1.2
+Version: 1.3
 Author URI: http://eagerterrier.co.uk
 */
 
@@ -239,7 +239,13 @@ function sopablackout_init() {
 
 if(!function_exists('sopablackout_header')):
 function sopablackout_header($status_header, $header, $text, $protocol) {
-	if ( !is_user_logged_in() ) {
+	if ( sopablackout_showtologgedinusers() ) {
+		if( defined( 'WPCACHEHOME' ) ) {
+			// Solves issue of white page output with Super Cache plugin version 0.9.9.6.
+			// Did not occur when removing <html> and </html> tag in splash page source, so weird problem.
+			ob_end_clean();
+		}
+		nocache_headers();
 		return "$protocol 503 Service Unavailable";
 	}
 }
@@ -305,7 +311,7 @@ function sopablackout_showtologgedinusers(){
 
 if (function_exists('add_filter') && (sopablackout_checkdate() || sopablackout_testmode()) ){
 	add_filter('status_header', 'sopablackout_header', 10, 4);
-	add_action('get_header', 'sopablackout_content');
+	add_action('template_redirect', 'sopablackout_content');
 	sopablackout_add_feed_actions();
 } 
 
